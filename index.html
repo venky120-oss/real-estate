@@ -10,9 +10,12 @@
 <meta property="og:description" content="Verified homes, plots and commercial spaces. Free site visits, legal checks and loan assistance.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80">
+<link rel="preload" as="image" href="images/hero-villa-800.webp" media="(max-width:799px)" fetchpriority="high">
+<link rel="preload" as="image" href="images/hero-villa-1600.webp" media="(min-width:800px)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
 <script type="application/ld+json">
 {
@@ -101,7 +104,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdro
 
 /* Hero */
 .hero{position:relative;color:#fff;padding:64px 0 72px;background:#0b1f33}
-.hero-bg{position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=80") center/cover no-repeat}
+.hero-bg{position:absolute;inset:0;background:url("images/hero-villa-800.webp") center/cover no-repeat}
+@media (min-width:800px){.hero-bg{background-image:url("images/hero-villa-1600.webp")}}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
 .hero-video.ready{opacity:1}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(9,25,42,.92) 0%,rgba(9,25,42,.75) 50%,rgba(9,25,42,.45) 100%)}
@@ -328,7 +332,9 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 
 /* Final CTA */
 .final{position:relative;color:#fff;background:#0b1f33;overflow:hidden}
-.final-bg{position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=80") center/cover}
+.final-bg{position:absolute;inset:0;background:url("images/villa-gated-800.webp") center/cover}
+@media (min-width:800px){.final-bg{background-image:url("images/villa-gated-1600.webp")}}
+.final-bg:not(.in){background-image:none!important} /* lazy: JS adds .in when the section nears the screen */
 .final-bg::after{content:"";position:absolute;inset:0;background:rgba(9,25,42,.86)}
 .final .container{position:relative;display:grid;gap:32px;align-items:center}
 .final h2{color:#fff}
@@ -481,11 +487,7 @@ footer .logo-text{color:#fff}
     <!-- Stock video: "Aerial footage of a luxury villa with pool" by Ahmet Kurt, Pexels (free licence, commercial use OK):
          https://www.pexels.com/video/a-bird-s-eye-view-of-a-large-house-with-a-pool-19120252/
          [REPLACE] with your own property / drone footage when you have it. The photo shows until the video loads. -->
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"
-      poster="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=80">
-      <source src="videos/hero-1080.mp4" type="video/mp4" media="(min-width:1000px)">
-      <source src="videos/hero-720.mp4" type="video/mp4">
-    </video>
+    <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true"></video>
   </div>
   <div class="container">
     <div>
@@ -628,7 +630,7 @@ footer .logo-text{color:#fff}
       <a href="#" class="btn btn-navy js-open" data-prop="Request legal documents" data-title="Request legal documents" data-sub="We'll share copies of the RERA certificate, title deed, EC and approvals on WhatsApp." style="margin-top:24px">Request legal documents</a>
     </div>
     <div class="img-frame reveal">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="Bright modern living room with large windows" onerror="this.remove()">
+      <img loading="lazy" decoding="async" width="800" height="1000" src="images/living-room-800.webp" srcset="images/living-room-400.webp 400w, images/living-room-800.webp 800w" sizes="(min-width:1000px) 560px, 100vw" alt="Bright modern living room with large windows" onerror="this.remove()">
       <div class="float-card"><b>"No hidden charges"</b><br>Full cost sheet — base price, parking, GST, registration — shared before you pay anything.</div>
     </div>
   </div>
@@ -644,12 +646,12 @@ footer .logo-text{color:#fff}
     </div>
     <!-- [REPLACE] areas & counts with the agency's real coverage -->
     <div class="locs">
-      <a href="#properties" class="loc-card" data-loc="OMR"><img loading="lazy" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=75" alt="Apartment towers on OMR" onerror="this.remove()"><div><b>OMR</b><span>IT corridor</span></div></a>
-      <a href="#properties" class="loc-card" data-loc="Velachery"><img loading="lazy" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=75" alt="Residential home in Velachery" onerror="this.remove()"><div><b>Velachery</b><span>Metro connected</span></div></a>
-      <a href="#properties" class="loc-card" data-loc="Anna Nagar"><img loading="lazy" src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=75" alt="Premium villa in Anna Nagar" onerror="this.remove()"><div><b>Anna Nagar</b><span>Premium residential</span></div></a>
-      <a href="#properties" class="loc-card" data-loc="ECR"><img loading="lazy" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=75" alt="Villa on East Coast Road" onerror="this.remove()"><div><b>ECR</b><span>Villas &amp; beach homes</span></div></a>
-      <a href="#properties" class="loc-card" data-loc="Porur"><img loading="lazy" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=75" alt="Commercial buildings in Porur" onerror="this.remove()"><div><b>Porur</b><span>Fast-growing west</span></div></a>
-      <a href="#properties" class="loc-card" data-loc="Tambaram"><img loading="lazy" src="https://images.pexels.com/photos/15422584/pexels-photo-15422584.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Aerial view of plotted land near Tambaram" onerror="this.remove()"><div><b>Tambaram</b><span>Affordable plots</span></div></a>
+      <a href="#properties" class="loc-card" data-loc="OMR"><img loading="lazy" decoding="async" width="400" height="400" src="images/apartment-tower-400.webp" alt="Apartment towers on OMR" onerror="this.remove()"><div><b>OMR</b><span>IT corridor</span></div></a>
+      <a href="#properties" class="loc-card" data-loc="Velachery"><img loading="lazy" decoding="async" width="400" height="400" src="images/house-modern-400.webp" alt="Residential home in Velachery" onerror="this.remove()"><div><b>Velachery</b><span>Metro connected</span></div></a>
+      <a href="#properties" class="loc-card" data-loc="Anna Nagar"><img loading="lazy" decoding="async" width="400" height="400" src="images/villa-pool-400.webp" alt="Premium villa in Anna Nagar" onerror="this.remove()"><div><b>Anna Nagar</b><span>Premium residential</span></div></a>
+      <a href="#properties" class="loc-card" data-loc="ECR"><img loading="lazy" decoding="async" width="400" height="400" src="images/hero-villa-400.webp" alt="Villa on East Coast Road" onerror="this.remove()"><div><b>ECR</b><span>Villas &amp; beach homes</span></div></a>
+      <a href="#properties" class="loc-card" data-loc="Porur"><img loading="lazy" decoding="async" width="400" height="400" src="images/office-towers-400.webp" alt="Commercial buildings in Porur" onerror="this.remove()"><div><b>Porur</b><span>Fast-growing west</span></div></a>
+      <a href="#properties" class="loc-card" data-loc="Tambaram"><img loading="lazy" decoding="async" width="400" height="400" src="images/plot-layout-400.webp" alt="Aerial view of plotted land near Tambaram" onerror="this.remove()"><div><b>Tambaram</b><span>Affordable plots</span></div></a>
     </div>
   </div>
 </section>
@@ -866,17 +868,17 @@ const FORM_ENDPOINT = "";
 const REVIEWS = [];
 
 /* ===== SAMPLE LISTINGS — [REPLACE] with real, verified inventory ===== */
-const IMG = id => `https://images.unsplash.com/${id}?w=800&q=75`;
+const IMG = name => `images/${name}`; // images/<name>-400.webp and -800.webp
 const PROPS = [
-  {title:"3 BHK Premium Apartment",loc:"OMR",deal:"buy",type:"apartment",price:9800000,beds:3,area:1450,img:IMG("photo-1545324418-cc1a3fa10c00"),rera:"[RERA No.]"},
-  {title:"4 BHK Independent Villa",loc:"ECR",deal:"buy",type:"villa",price:24500000,beds:4,area:3200,img:IMG("photo-1613490493576-7fde63acd811"),rera:"[RERA No.]"},
-  {title:"2 BHK Apartment near Metro",loc:"Velachery",deal:"buy",type:"apartment",price:6800000,beds:2,area:1050,img:IMG("photo-1522708323590-d24dbb6b0267"),rera:"[RERA No.]"},
-  {title:"2 BHK Ready-to-Move Flat",loc:"Anna Nagar",deal:"buy",type:"apartment",price:8900000,beds:2,area:1100,img:IMG("photo-1560448204-e02f11c3d0e2")},
-  {title:"Grade-A Office Space",loc:"Porur",deal:"commercial",type:"office",price:18500000,beds:0,area:2400,img:IMG("photo-1486406146926-c627a92ad1ab")},
-  {title:"DTCP-Approved Plot",loc:"Tambaram",deal:"plot",type:"plot",price:3600000,beds:0,area:1200,img:"https://images.pexels.com/photos/15422584/pexels-photo-15422584.jpeg?auto=compress&cs=tinysrgb&w=800"},
-  {title:"3 BHK Villa in Gated Community",loc:"Porur",deal:"buy",type:"villa",price:15500000,beds:3,area:2100,img:IMG("photo-1600585154340-be6161a56a0c")},
-  {title:"Retail Showroom for Sale",loc:"Velachery",deal:"commercial",type:"office",price:12500000,beds:0,area:650,img:IMG("photo-1441986300917-64674bd600d8")},
-  {title:"3 BHK Gated Community Apartment",loc:"OMR",deal:"buy",type:"apartment",price:11200000,beds:3,area:1500,img:IMG("photo-1600607687939-ce8a6c25118c")}
+  {title:"3 BHK Premium Apartment",loc:"OMR",deal:"buy",type:"apartment",price:9800000,beds:3,area:1450,img:IMG("apartment-tower"),rera:"[RERA No.]"},
+  {title:"4 BHK Independent Villa",loc:"ECR",deal:"buy",type:"villa",price:24500000,beds:4,area:3200,img:IMG("villa-pool"),rera:"[RERA No.]"},
+  {title:"2 BHK Apartment near Metro",loc:"Velachery",deal:"buy",type:"apartment",price:6800000,beds:2,area:1050,img:IMG("apartment-interior"),rera:"[RERA No.]"},
+  {title:"2 BHK Ready-to-Move Flat",loc:"Anna Nagar",deal:"buy",type:"apartment",price:8900000,beds:2,area:1100,img:IMG("flat-living")},
+  {title:"Grade-A Office Space",loc:"Porur",deal:"commercial",type:"office",price:18500000,beds:0,area:2400,img:IMG("office-towers")},
+  {title:"DTCP-Approved Plot",loc:"Tambaram",deal:"plot",type:"plot",price:3600000,beds:0,area:1200,img:IMG("plot-layout")},
+  {title:"3 BHK Villa in Gated Community",loc:"Porur",deal:"buy",type:"villa",price:15500000,beds:3,area:2100,img:IMG("villa-gated")},
+  {title:"Retail Showroom for Sale",loc:"Velachery",deal:"commercial",type:"office",price:12500000,beds:0,area:650,img:IMG("retail-showroom")},
+  {title:"3 BHK Gated Community Apartment",loc:"OMR",deal:"buy",type:"apartment",price:11200000,beds:3,area:1500,img:IMG("living-room")}
 ];
 
 /* ===== Helpers ===== */
@@ -953,7 +955,7 @@ function renderProps(){
     const priceTxt = `${shortINR(p.price)}<small>*</small>`;
     const name = `${p.title}, ${p.loc}`;
     return `<article class="card">
-      <div class="card-img"><img loading="lazy" src="${p.img}" alt="${name}" onerror="this.remove()">
+      <div class="card-img"><img loading="lazy" decoding="async" width="800" height="600" src="${p.img}-800.webp" srcset="${p.img}-400.webp 400w, ${p.img}-800.webp 800w" sizes="(min-width:1000px) 380px, (min-width:640px) 50vw, 100vw" alt="${name}" onerror="this.remove()">
         <span class="tag">${tag}</span></div>
       <div class="card-body">
         <div class="price">${priceTxt}</div>
@@ -1100,6 +1102,9 @@ const io = new IntersectionObserver(entries => entries.forEach(en => {
   } else el.classList.add("in");
 }), {threshold:.2});
 $$("[data-count], .reveal, .steps").forEach(el => io.observe(el));
+// Lazy-load the final section's background photo shortly before it scrolls into view
+const bgIO = new IntersectionObserver(entries => entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add("in"); bgIO.unobserve(en.target); } }), {rootMargin:"600px 0px"});
+bgIO.observe($(".final-bg"));
 
 /* Verification checklist + location cards: animate card by card, top to bottom, as they scroll into view */
 const lineEls = $$("#verified .check, #verified .checks ~ .btn, .loc-card");
@@ -1116,13 +1121,24 @@ lineEls.forEach(el => lineIO.observe(el));
 $("#yr").textContent = new Date().getFullYear();
 
 /* ===== Hero background video ===== */
+// The photo paints first; the video only starts downloading after the page has fully loaded,
+// skipped on data-saver / 2G, and the smaller 720p file is used on phones and 3G.
 const heroVid = $(".hero-video");
-if(matchMedia("(prefers-reduced-motion: reduce)").matches){
+const conn = navigator.connection || {};
+if(matchMedia("(prefers-reduced-motion: reduce)").matches || conn.saveData || /2g$/.test(conn.effectiveType || "")){
   heroVid.remove();
 } else {
-  heroVid.addEventListener("playing", () => heroVid.classList.add("ready"), {once:true});
-  $("source:last-of-type", heroVid).addEventListener("error", () => heroVid.remove()); // video unavailable → keep the photo
-  heroVid.play && heroVid.play().catch(() => {});
+  const startVideo = () => {
+    heroVid.src = innerWidth >= 1000 && conn.effectiveType !== "3g" ? "videos/hero-1080.mp4" : "videos/hero-720.mp4";
+    heroVid.addEventListener("playing", () => heroVid.classList.add("ready"), {once:true});
+    heroVid.addEventListener("error", () => heroVid.remove()); // video unavailable → keep the photo
+    heroVid.autoplay = true;
+    heroVid.play().catch(() => {});
+    // browsers pause video in background tabs; resume when the visitor comes back
+    document.addEventListener("visibilitychange", () => { if(!document.hidden && heroVid.paused) heroVid.play().catch(() => {}); });
+  };
+  const later = () => setTimeout(startVideo, 800);
+  document.readyState === "complete" ? later() : addEventListener("load", later, {once:true});
 }
 </script>
 </body>
