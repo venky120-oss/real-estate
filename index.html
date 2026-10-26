@@ -1122,14 +1122,15 @@ $("#yr").textContent = new Date().getFullYear();
 
 /* ===== Hero background video ===== */
 // The photo paints first; the video only starts downloading after the page has fully loaded,
-// skipped on data-saver / 2G, and the smaller 720p file is used on phones and 3G.
+// desktop only (phones and tablets keep the photo for a fast mobile score), skipped on data-saver / 2G,
+// and the smaller 720p file is used on 3G.
 const heroVid = $(".hero-video");
 const conn = navigator.connection || {};
-if(matchMedia("(prefers-reduced-motion: reduce)").matches || conn.saveData || /2g$/.test(conn.effectiveType || "")){
+if(!matchMedia("(min-width:1000px)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches || conn.saveData || /2g$/.test(conn.effectiveType || "")){
   heroVid.remove();
 } else {
   const startVideo = () => {
-    heroVid.src = innerWidth >= 1000 && conn.effectiveType !== "3g" ? "videos/hero-1080.mp4" : "videos/hero-720.mp4";
+    heroVid.src = conn.effectiveType === "3g" ? "videos/hero-720.mp4" : "videos/hero-1080.mp4";
     heroVid.addEventListener("playing", () => heroVid.classList.add("ready"), {once:true});
     heroVid.addEventListener("error", () => heroVid.remove()); // video unavailable → keep the photo
     heroVid.autoplay = true;
